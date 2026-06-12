@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Nilai - SIPMK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <h1>SIPMK</h1>
+            </div>
+            <nav>
+                <!-- Checkbox (hidden) -->
+                <input type="checkbox" id="menu-toggle">
+
+                <!-- Hamburger -->
+                <label for="menu-toggle" class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <!-- Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="melihat-nilai.html">Melihat Nilai</a></li>
+                    <li><a href="hasil.html" class="active">Hasil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <div class="hasil-hero">
+        <div class="container hasil-hero-inner">
+            <div class="hasil-hero-left">
+                <h2>📋 Hasil Penilaian Mata Kuliah</h2>
+                <p>Transkrip nilai akademik mahasiswa</p>
+            </div>
+            <div class="semester-badge">
+                🗓️ Semester Ganjil 2025/2026
+            </div>
+        </div>
+    </div>
+
+    <section class="container hasil-penilaian">
+
+        <!-- SUMMARY CARDS -->
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-icon blue">📚</div>
+                <div class="summary-info">
+                    <h4>3</h4>
+                    <p>Total Mata Kuliah</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon green">✅</div>
+                <div class="summary-info">
+                    <h4>2</h4>
+                    <p>Mata Kuliah Lulus</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon orange">⭐</div>
+                <div class="summary-info">
+                    <h4>3.25</h4>
+                    <p>Indeks Prestasi (IP)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- IDENTITAS MAHASISWA -->
+        <div class="identitas-card">
+            <div class="identitas-header">
+                <span>🎓</span>
+                <h3>Data Identitas Mahasiswa</h3>
+            </div>
+            <div class="identitas-body">
+                <div class="identitas-item">
+                    <span class="label">Nama Lengkap</span>
+                    <span class="value">Fathur Rizky Ananda</span>
+                </div>
+                <div class="identitas-item">
+                    <span class="label">Nomor Pokok Mahasiswa</span>
+                    <span class="value">241122040</span>
+                </div>
+                <div class="identitas-item">
+                    <span class="label">Fakultas</span>
+                    <span class="value">Fakultas Informatika</span>
+                </div>
+                <div class="identitas-item">
+                    <span class="label">Program Studi</span>
+                    <span class="value">Sistem Informasi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABEL NILAI -->
+        <div class="table-wrapper">
+            <div class="table-top">
+                <h3>📊 Daftar Nilai Mata Kuliah</h3>
+                <span class="total-sks">Total SKS: 8</span>
+            </div>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kode MK</th>
+                        <th>Mata Kuliah</th>
+                        <th>SKS</th>
+                        <th>Nilai Akhir</th>
+                        <th>Huruf</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><code
+                                style="background:#f1f5f9;padding:3px 8px;border-radius:5px;font-size:0.8rem;">12.WDS.201</code>
+                        </td>
+                        <td><strong>Perancangan Web</strong></td>
+                        <td>3</td>
+                        <td>
+                            <div class="nilai-cell">
+                                <strong>95.5</strong>
+                                <div class="nilai-bar-bg">
+                                    <div class="nilai-bar-fill tinggi" style="width:95%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="huruf-a">A</span></td>
+                        <td><span class="status-lulus">✓ Lulus</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><code
+                                style="background:#f1f5f9;padding:3px 8px;border-radius:5px;font-size:0.8rem;">12.DAA.202</code>
+                        </td>
+                        <td><strong>Desain & Analisis Algoritma</strong></td>
+                        <td>3</td>
+                        <td>
+                            <div class="nilai-cell">
+                                <strong>82.0</strong>
+                                <div class="nilai-bar-bg">
+                                    <div class="nilai-bar-fill sedang" style="width:82%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="huruf-bplus">B+</span></td>
+                        <td><span class="status-lulus">✓ Lulus</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><code
+                                style="background:#f1f5f9;padding:3px 8px;border-radius:5px;font-size:0.8rem;">12.SBD.203</code>
+                        </td>
+                        <td><strong>Sistem Basis Data</strong></td>
+                        <td>2</td>
+                        <td>
+                            <div class="nilai-cell">
+                                <strong>49.0</strong>
+                                <div class="nilai-bar-bg">
+                                    <div class="nilai-bar-fill rendah" style="width:49%"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="huruf-d">D</span></td>
+                        <td><span class="status-ulang">✗ Mengulang</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+        <!-- FOOTER -->
+        <div class="hasil-footer">
+            <a href="melihat-nilai.html" class="back-btn">← Cek Nama Lain</a>
+        </div>
+        
+        <!-- FOOTER -->
+    <footer>
+        <div class="container footer-flex">
+            <div class="footer-left">
+                <p>&copy; 2026 Sistem Informasi Penilaian Mata Kuliah</p>
+                <p>Moral | Integritas | Komitmen | Ramah | Optimis | Sinergi</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

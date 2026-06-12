@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melihat Nilai - SIPMK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <h1>SIPMK</h1>
+            </div>
+            <nav>
+               <!-- Checkbox (hidden) -->
+                <input type="checkbox" id="menu-toggle">
+
+                <!-- Hamburger -->
+                <label for="menu-toggle" class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <!-- Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="melihat-nilai.html" class="active">Melihat Nilai</a></li>
+                    <li><a href="hasil.html">Hasil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+
+            <!-- Icon -->
+            <div class="form-icon">🎓</div>
+
+            <h2>Cek Nilai Mahasiswa</h2>
+            <p>Masukkan nama lengkap mahasiswa untuk melihat hasil penilaian mata kuliah</p>
+
+            <form action="hasil.html">
+                <div class="form-group">
+                    <label class="form-label">Nama Mahasiswa</label>
+                    <span class="input-icon">👤</span>
+                    <input type="text" placeholder="NAMA LENGKAP" required>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>🔍</span> Lihat Nilai
+                </button>
+            </form>
+
+            <!-- Info badge -->
+            <div class="form-badge">
+                <span>ℹ️</span>
+                <p>belum respon ke nama yang sesuai input</p>
+            </div>
+
+            <a href="index.html" class="back-link">
+                ← Kembali ke Beranda
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+        <footer>
+            <div class="container footer-flex">
+                <div class="footer-left">
+                    <p>&copy; 2026 Sistem Informasi Penilaian Mata Kuliah</p>
+                    <p>Moral | Integritas | Komitmen | Ramah | Optimis | Sinergi</p>
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>
