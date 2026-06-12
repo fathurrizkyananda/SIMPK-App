@@ -10,7 +10,7 @@ if (formLoginMhs) {
         const pass = document.getElementById('login_pass_mhs').value;
 
         // Password default semua mahasiswa: mhs123
-        if (nim !== '' && pass === 'mhs123') {
+        if (nim !== '24112000' && pass === 'mhs123') {
             localStorage.setItem('session_nim', nim);
             alert('Login Mahasiswa Berhasil!');
             window.location.href = 'dashboard-mahasiswa.html';
