@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Dosen - SIPMK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo"><h1>Dashboard Dosen</h1></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Input Nilai</a></li>
+                    <li><a href="login.html" id="btn-logout" style="color: #ef4444;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hasil-hero">
+        <div class="container hasil-hero-inner">
+            <div class="hasil-hero-left">
+                <h2>👨‍🏫 Portal Akademik Dosen</h2>
+                <p>Manajemen penilaian mahasiswa untuk Sistem Informasi Layanan Akademik</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="container hasil-penilaian">
+        <div class="form-card" style="max-width: 800px; margin: 0 auto; margin-top: -80px;">
+            <div class="form-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">📝</div>
+            <h2>Input Nilai Mahasiswa</h2>
+            <p>Masukkan data dan nilai akhir mahasiswa ke sistem.</p>
+
+            <form id="form-input-dosen">
+                <div class="form-group">
+                    <label class="form-label">Nama Mahasiswa</label>
+                    <input type="text" id="in_nama" placeholder="Contoh: Andrean Hisar..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">NIM</label>
+                    <input type="text" id="in_nim" placeholder="Masukkan NIM Mahasiswa..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mata Kuliah</label>
+                    <select id="in_mk" required style="width: 100%; padding: 13px; border: 1.5px solid #e2e8f0; border-radius: 10px;">
+                        <option value="Perancangan Web">Perancangan Web</option>
+                        <option value="Sistem Basis Data">Sistem Basis Data</option>
+                        <option value="Algoritma Pemrograman">Algoritma Pemrograman</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label class="form-label">Nilai Angka (0-100)</label>
+                        <input type="number" id="in_nilai" min="0" max="100" placeholder="0" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">Grade</label>
+                        <select id="in_grade" required style="width: 100%; padding: 13px; border: 1.5px solid #e2e8f0; border-radius: 10px;">
+                            <option value="A">A</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit" style="background: linear-gradient(135deg, #16a34a, #15803d);">
+                    <span>💾</span> Simpan Nilai
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,232 +1,73 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda - SIPMK</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- HEADER -->
     <header>
         <div class="container header-flex">
             <div class="logo">
                 <h1>SIPMK</h1>
             </div>
             <nav>
-                <!-- Checkbox (hidden) -->
                 <input type="checkbox" id="menu-toggle">
-
-                <!-- Hamburger -->
                 <label for="menu-toggle" class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </label>
-                <!-- Menu -->
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Beranda</a></li>
-                    <li><a href="melihat-nilai.html">Melihat Nilai</a></li>
-                    <li><a href="hasil.html">Hasil</a></li>
+                    <li><a href="login-mahasiswa.html">Mahasiswa</a></li>
+                    <li><a href="login-dosen.html">Dosen</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-
-        <!-- HERO -->
         <section class="hero">
             <div class="hero-overlay">
                 <div class="container">
                     <div class="hero-layout">
                         <div class="hero-content">
-                            <p class="subtitle">Selamat Datang di Halaman</p>
-                            <h2>Penilaian Mata Kuliah</h2>
-                            <p class="desc">Platform Pengecekan Nilai yang Praktis untuk Mahasiswa</p>
-                            <a href="melihat-nilai.html" class="btn-action">
-                                <span>📋</span> Ayo Cek Nilai!
-                            </a>
-                        </div>
-
-                        <!-- Laptop Illustration -->
-                        <div class="hero-illustration">
-                            <div class="illustration">
-
-                                <!-- SHADOWS -->
-                                <div class="shadow-laptop"></div>
-                                <div class="shadow-cap"></div>
-                                <div class="shadow-plant"></div>
-
-                                <!-- LAPTOP -->
-                                <div class="laptop">
-                                    <div class="laptop-lid">
-                                        <div class="laptop-screen">
-                                            <div class="window-dots">
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                            </div>
-                                            <div class="screen-header">
-                                                <span>Mata Kuliah</span>
-                                                <span>Nilai</span>
-                                                <span>Grade</span>
-                                            </div>
-                                            <div class="screen-rows">
-                                                <div class="screen-row">
-                                                    <div class="row-bar"></div>
-                                                    <span class="grade a">A</span>
-                                                </div>
-                                                <div class="screen-row">
-                                                    <div class="row-bar"></div>
-                                                    <span class="grade bplus">B+</span>
-                                                </div>
-                                                <div class="screen-row">
-                                                    <div class="row-bar"></div>
-                                                    <span class="grade aminus">A-</span>
-                                                </div>
-                                                <div class="screen-row">
-                                                    <div class="row-bar"></div>
-                                                    <span class="grade b">B</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="laptop-base"></div>
-                                    <div class="laptop-foot"></div>
-                                </div>
-                            </div>
+                            <p class="subtitle">Sistem Informasi Layanan Akademik</p>
+                            <h2>Penilaian Mata Kuliah (SIPMK)</h2>
+                            <p class="desc">Platform terpadu untuk Dosen menginput nilai dan Mahasiswa mengecek hasil studi.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CARDS GRID -->
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon-wrap blue-light">📋</div>
+        <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px;">
+            <div class="card" onclick="location.href='login-mahasiswa.html'" style="border-radius: 10px 0 0 10px;">
+                <div class="card-icon-wrap blue-light">🎓</div>
                 <div class="card-text">
-                    <h3>Lihat Nilai</h3>
-                    <p>Masukkan data mahasiswa untuk melihat hasil nilai.</p>
+                    <h3>Portal Mahasiswa</h3>
+                    <p>Hanya untuk mengecek dan melihat transkrip nilai akademik.</p>
                 </div>
                 <span class="card-arrow">›</span>
             </div>
-            <div class="card">
-                <div class="card-icon-wrap green-light">📊</div>
+
+            <div class="card" onclick="location.href='login-dosen.html'" style="border-radius: 0 10px 10px 0;">
+                <div class="card-icon-wrap green-light">👨‍🏫</div>
                 <div class="card-text">
-                    <h3>Hasil Penilaian</h3>
-                    <p>Lihat rekap nilai akhir dan grade mahasiswa.</p>
-                </div>
-                <span class="card-arrow">›</span>
-            </div>
-            <div class="card">
-                <div class="card-icon-wrap purple-light">🥧</div>
-                <div class="card-text">
-                    <h3>Statistik</h3>
-                    <p>Analisis performa nilai secara menyeluruh.</p>
+                    <h3>Portal Dosen</h3>
+                    <p>Login khusus dosen untuk menginput dan mengelola data nilai.</p>
                 </div>
                 <span class="card-arrow">›</span>
             </div>
         </div>
-
-        <!-- STEPS SECTION -->
-        <section class="steps-section">
-            <div class="container">
-                <h2 class="section-title">Cara Melihat Nilai</h2>
-
-                <div class="steps-modern">
-                    <!-- STEP 1 -->
-                    <div class="step-modern">
-                        <div class="icon-circle blue">👤</div>
-                        <div class="step-text">
-                            <span class="badge blue">1</span>
-                            <h3>Isi Form</h3>
-                            <p>Masukkan nama mahasiswa pada form yang tersedia.</p>
-                        </div>
-                    </div>
-
-                    <div class="connector">
-                        <div class="circle-arrow">→</div>
-                    </div>
-
-                    <!-- STEP 2 -->
-                    <div class="step-modern">
-                        <div class="icon-circle green">📤</div>
-                        <div class="step-text">
-                            <span class="badge green">2</span>
-                            <h3>Submit Data</h3>
-                            <p>Klik tombol submit untuk mengirim data.</p>
-                        </div>
-                    </div>
-
-                    <div class="connector">
-                        <div class="circle-arrow">→</div>
-                    </div>
-
-                    <!-- STEP 3 -->
-                    <div class="step-modern">
-                        <div class="icon-circle purple">📊</div>
-                        <div class="step-text">
-                            <span class="badge purple">3</span>
-                            <h3>Lihat Hasil</h3>
-                            <p>Lihat hasil nilai dan grade mahasiswa.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr>
-
-        <!-- STATS / INFO SECTION -->
-        <section class="info-section">
-            <div class="container info-grid">
-
-                <div class="info-box">
-                    <div class="info-icon blue">👥</div>
-                    <div class="info-content">
-                        <h3 class="blue-text">5</h3>
-                        <p class="info-label">Total Mahasiswa</p>
-                        <p class="info-sub">Mahasiswa terdaftar</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <div class="info-icon green">📚</div>
-                    <div class="info-content">
-                        <h3 class="green-text">3</h3>
-                        <p class="info-label">Mata Kuliah</p>
-                        <p class="info-sub">Mata kuliah aktif</p>
-                    </div>
-                   </div>
-                <div class="info-box">
-                    <div class="info-icon purple">🛡️</div>
-                    <div class="info-content">
-                        <h3 class="purple-text">24/7</h3>
-                        <p class="info-label">Akses Sistem</p>
-                        <p class="info-sub">Sistem dapat diakses kapan saja</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
     </main>
 
-    <!-- FOOTER -->
-    <footer>
+    <footer style="position: absolute; bottom: 0; width: 100%;">
         <div class="container footer-flex">
             <div class="footer-left">
                 <p>&copy; 2026 Sistem Informasi Penilaian Mata Kuliah</p>
-                <p>Moral | Integritas | Komitmen | Ramah | Optimis | Sinergi</p>
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>

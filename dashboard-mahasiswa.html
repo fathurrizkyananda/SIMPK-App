@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHS Mahasiswa - SIPMK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo"><h1>Portal Mahasiswa</h1></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Transkrip</a></li>
+                    <li><a href="login.html" id="btn-logout-mhs" style="color: #ef4444;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hasil-hero">
+        <div class="container hasil-hero-inner">
+            <div class="hasil-hero-left">
+                <h2>📋 Transkrip Nilai Akademik</h2>
+                <p>Selamat datang, <strong id="mhs_welcome_name">Loading...</strong></p>
+            </div>
+            <div class="semester-badge">Semester 4</div>
+        </div>
+    </div>
+
+    <section class="container hasil-penilaian">
+        
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-icon blue">📚</div>
+                <div class="summary-info">
+                    <h4>1</h4>
+                    <p>Total Mata Kuliah (Simulasi)</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon green">✅</div>
+                <div class="summary-info">
+                    <h4>1</h4>
+                    <p>Mata Kuliah Lulus</p>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon orange">⭐</div>
+                <div class="summary-info">
+                    <h4>3.50</h4>
+                    <p>Indeks Prestasi (IP)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="identitas-card">
+            <div class="identitas-header">
+                <span>🎓</span><h3>Identitas Diri</h3>
+            </div>
+            <div class="identitas-body">
+                <div class="identitas-item"><span class="label">Nama Lengkap</span><span class="value" id="mhs_out_nama">-</span></div>
+                <div class="identitas-item"><span class="label">NIM</span><span class="value" id="mhs_out_nim">-</span></div>
+                <div class="identitas-item"><span class="label">Program Studi</span><span class="value">Sistem Informasi</span></div>
+                <div class="identitas-item"><span class="label">Perguruan Tinggi</span><span class="value">Universitas Mikroskil</span></div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <div class="table-top">
+                <h3>📊 Kartu Hasil Studi</h3>
+            </div>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Mata Kuliah</th>
+                        <th>Nilai Angka</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tabel_nilai_body">
+                    <tr><td colspan="4" style="text-align:center; padding: 30px;">Belum ada nilai yang diinput oleh dosen.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
