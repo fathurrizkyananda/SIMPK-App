@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Mahasiswa</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:20px;
+}
+
+input{
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:10px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#2563eb;
+color:white;
+}
+
+</style>
+
+</head>
+<body>
+
+<h2>Data Mahasiswa</h2>
+
+<input type="text" id="nim" placeholder="NIM">
+
+<input type="text" id="nama" placeholder="Nama">
+
+<input type="text" id="kelas" placeholder="Kelas">
+
+<input type="text" id="prodi" placeholder="Prodi">
+
+<button onclick="simpanMahasiswa()">
+Simpan
+</button>
+
+<table>
+
+<thead>
+<tr>
+<th>NIM</th>
+<th>Nama</th>
+<th>Kelas</th>
+<th>Prodi</th>
+<th>Aksi</th>
+</tr>
+</thead>
+
+<tbody id="tbodyMahasiswa">
+
+</tbody>
+
+</table>
+
+<script src="js/data-mahasiswa.js"></script>
+
+</body>
+</html>
