@@ -37,7 +37,6 @@ if (!isDosen) {
     document.getElementById('thAksi').style.display = 'none';
     document.getElementById('topbarDesc').innerText = 'Daftar mata kuliah yang tersedia pada sistem (dikelola oleh Dosen).';
 }
-
 // ---------------------------------------------------------------------
 // DATA
 // ---------------------------------------------------------------------
