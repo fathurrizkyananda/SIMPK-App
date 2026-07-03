@@ -1,82 +1,114 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Mahasiswa</title>
-
-<style>
-
-body{
-font-family:Arial;
-padding:20px;
-}
-
-input{
-padding:10px;
-margin:5px;
-}
-
-button{
-padding:10px;
-cursor:pointer;
-}
-
-table{
-width:100%;
-margin-top:20px;
-border-collapse:collapse;
-}
-
-th,td{
-border:1px solid #ddd;
-padding:10px;
-text-align:center;
-}
-
-th{
-background:#2563eb;
-color:white;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mahasiswa - SIPMK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="seal">S</span>
+                <h1>SIPMK</h1>
+            </div>
+            <p class="sidebar-role">Portal Dosen</p>
+            <nav class="sidebar-nav">
+                <a href="dashboard-dosen.html"><span class="icon">🏠</span> Dashboard</a>
+                <a href="data-mahasiswa.html" class="active"><span class="icon">🎓</span> Data Mahasiswa</a>
+                <a href="matakuliah.html"><span class="icon">📚</span> Mata Kuliah</a>
+                <a href="input-nilai.html"><span class="icon">📝</span> Input Nilai</a>
+                <a href="riwayat.html"><span class="icon">📊</span> Riwayat Nilai</a>
+            </nav>
+            <div class="sidebar-foot">
+                <a href="#" onclick="logout('login-dosen.html')"><span class="icon">🚪</span> Logout</a>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop"></div>
 
-<h2>Data Mahasiswa</h2>
+        <main class="app-main">
+            <div class="mobile-topbar">
+                <button id="sidebarOpen" type="button">☰</button>
+                <h2>Data Mahasiswa</h2>
+            </div>
 
-<input type="text" id="nim" placeholder="NIM">
+            <div class="topbar">
+                <div>
+                    <h2>Data Mahasiswa</h2>
+                    <p>Tambah, ubah, dan hapus data mahasiswa yang terdaftar.</p>
+                </div>
+                <div class="topbar-user">
+                    <div class="avatar">D</div>
+                    <span>Dosen</span>
+                </div>
+            </div>
 
-<input type="text" id="nama" placeholder="Nama">
+            <div class="app-content">
+                <div class="panel" style="margin-top:0;">
+                    <h3>Form Data Mahasiswa</h3>
+                    <form id="form-mahasiswa">
+                        <div class="field-grid">
+                            <div class="field">
+                                <label for="nim">NIM</label>
+                                <input type="text" id="nim" placeholder="Contoh: 24112001" required>
+                            </div>
+                            <div class="field">
+                                <label for="nama">Nama Lengkap</label>
+                                <input type="text" id="nama" placeholder="Nama mahasiswa" required>
+                            </div>
+                            <div class="field">
+                                <label for="kelas">Kelas</label>
+                                <input type="text" id="kelas" placeholder="Contoh: SI-A" required>
+                            </div>
+                            <div class="field">
+                                <label for="prodi">Program Studi</label>
+                                <input type="text" id="prodi" placeholder="Contoh: Sistem Informasi" required>
+                            </div>
+                        </div>
+                        <div class="panel-actions">
+                            <button type="submit" class="btn-save">💾 Simpan Data</button>
+                            <button type="button" class="btn-secondary" onclick="resetForm()">Batal</button>
+                        </div>
+                        <p class="field"><small>Password login default untuk mahasiswa yang didaftarkan di sini adalah <strong>mhs123</strong>.</small></p>
+                    </form>
+                </div>
 
-<input type="text" id="kelas" placeholder="Kelas">
+                <div class="panel">
+                    <div class="table-toolbar">
+                        <h3>Daftar Mahasiswa</h3>
+                        <span class="pill-count" id="jumlahMahasiswa">0 mahasiswa</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div class="search-box">
+                            <input type="text" id="searchMahasiswa" placeholder="Cari NIM, nama, kelas, atau prodi...">
+                        </div>
+                        <button type="button" class="btn-secondary" onclick="exportMahasiswaCSV()">⬇ Export CSV</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Prodi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyMahasiswa"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-<input type="text" id="prodi" placeholder="Prodi">
-
-<button onclick="simpanMahasiswa()">
-Simpan
-</button>
-
-<table>
-
-<thead>
-<tr>
-<th>NIM</th>
-<th>Nama</th>
-<th>Kelas</th>
-<th>Prodi</th>
-<th>Aksi</th>
-</tr>
-</thead>
-
-<tbody id="tbodyMahasiswa">
-
-</tbody>
-
-</table>
-
-<script src="js/data-mahasiswa.js"></script>
-
+    <script src="js/script.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/data-mahasiswa.js"></script>
 </body>
 </html>
