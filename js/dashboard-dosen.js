@@ -12,4 +12,7 @@ document.getElementById('statMK').innerText = matakuliah.length;
 document.getElementById('statNilai').innerText = nilai.length;
 
 renderGradeChart('gradeChart', nilai);
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed167230191b3293826b6308cc485b4176762531

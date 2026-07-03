@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // =====================================================================
 // RIWAYAT.JS — Rekap seluruh riwayat nilai (localStorage) - KEMBALI PUBLIK
 // =====================================================================
@@ -87,3 +88,28 @@ function exportRiwayatCSV() {
 
 // ─── TAMPILAN AWAL: LANGSUNG MUNCUL SEMUA DATA NILAI ───
 tampilkanRiwayat(semuaNilai);
+=======
+const data =
+JSON.parse(localStorage.getItem("nilaiMahasiswa"))
+|| [];
+
+const tbody =
+document.getElementById("tbodyRiwayat");
+
+tbody.innerHTML = "";
+
+data.forEach((item,index)=>{
+
+tbody.innerHTML += `
+<tr>
+<td>${index+1}</td>
+<td>${item.nim}</td>
+<td>${item.nama}</td>
+<td>${item.matkul}</td>
+<td>${item.nilaiAkhir}</td>
+<td>${item.grade}</td>
+</tr>
+`;
+
+});
+>>>>>>> ed167230191b3293826b6308cc485b4176762531
