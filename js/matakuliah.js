@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // =====================================================================
 // MATAKULIAH.JS — CRUD Data Mata Kuliah (Dosen) / Lihat Katalog (Mahasiswa)
 // =====================================================================
@@ -138,7 +137,7 @@ function exportMKCSV() {
 
 tampilkanMK();
 liveFilterTable('searchMK', 'tbodyMK');
-=======
+
 let matakuliah =
 JSON.parse(localStorage.getItem("matakuliah")) || [];
 
@@ -272,4 +271,4 @@ document.getElementById("sks").value = "";
 document.getElementById("semester").value = "";
 
 }
->>>>>>> ed167230191b3293826b6308cc485b4176762531
+
