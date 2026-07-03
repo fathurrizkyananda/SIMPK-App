@@ -2247,3 +2247,13 @@ nav ul li a.active { background: var(--indigo); }
 @media (max-width: 1024px) {
     .dosen-grid { grid-template-columns: 1fr !important; }
 }
+
+.sidebar-backdrop {
+    display: none; /* Menyembunyikan backdrop agar tidak menutupi layar */
+}
+
+/* Jika skrip JavaScript Anda menggunakan class .active atau .show untuk memunculkannya: */
+.sidebar-backdrop.active,
+.sidebar-backdrop.show {
+    display: block;
+}
