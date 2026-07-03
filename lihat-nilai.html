@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihat Nilai - SIPMK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="seal">S</span>
+                <h1>SIPMK</h1>
+            </div>
+            <p class="sidebar-role" id="sidebarRole">Portal</p>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <div class="sidebar-foot">
+                <a href="#" id="logoutLink"><span class="icon">🚪</span> Logout</a>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop"></div>
+
+        <main class="app-main">
+            <div class="mobile-topbar">
+                <button id="sidebarOpen" type="button">☰</button>
+                <h2>Lihat Nilai</h2>
+            </div>
+
+            <div class="topbar">
+                <div>
+                    <h2>Lihat Nilai</h2>
+                    <p>Cari nilai berdasarkan NIM atau Nama mahasiswa — isi salah satu saja juga bisa.</p>
+                </div>
+                <div class="topbar-user">
+                    <div class="avatar" id="topbarAvatar">?</div>
+                    <span id="topbarRoleLabel">-</span>
+                </div>
+            </div>
+
+            <div class="app-content">
+                <div class="panel" style="margin-top:0;">
+                    <h3>Form Pencarian</h3>
+                    <form id="form-cari-nilai">
+                        <div class="field-grid">
+                            <div class="field">
+                                <label for="nim">NIM</label>
+                                <input type="text" id="nim" placeholder="Masukkan NIM (opsional)">
+                            </div>
+                            <div class="field">
+                                <label for="nama">Nama</label>
+                                <input type="text" id="nama" placeholder="Masukkan Nama (opsional)">
+                            </div>
+                        </div>
+                        <p style="font-size:13px; color:var(--muted, #6b7280); margin:6px 0 0;">Isi salah satu kolom saja jika belum tahu keduanya.</p>
+                        <div class="panel-actions">
+                            <button type="submit" class="btn-save">🔍 Cari Nilai</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel">
+                    <div class="table-toolbar">
+                        <h3>Hasil Pencarian</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>Mata Kuliah</th>
+                                    <th>Tugas</th>
+                                    <th>UTS</th>
+                                    <th>UAS</th>
+                                    <th>Nilai Akhir</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hasilNilai">
+                                <tr class="empty-row"><td colspan="8">Silakan cari nilai terlebih dahulu</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/lihat-nilai.js"></script>
+</body>
+</html>
