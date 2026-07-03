@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Mahasiswa - SIPMK</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo"><h1>SIPMK</h1></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Kembali ke Beranda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+            <div class="form-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">🎓</div>
+            <h2>Login Mahasiswa</h2>
+            <p>1 akun bersama untuk semua mahasiswa — cari nilai Anda lewat NIM/Nama setelah masuk</p>
+
+            <form id="form-login-mhs">
+                <div class="form-group">
+                    <label class="form-label">Username Mahasiswa</label>
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="login_username" placeholder="mahasiswa" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="login_pass_mhs" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>🚪</span> Masuk
+                </button>
+            </form>
+
+            <div class="form-badge">
+                <span>ℹ️</span>
+                <p>Akun mahasiswa <strong>bersama untuk semua mahasiswa</strong> — bukan per-NIM lagi. Login: username <strong>mahasiswa</strong> / password <strong>mhs123</strong>. Setelah masuk, cari nilai siapa saja lewat menu <strong>Lihat Nilai</strong> atau <strong>Riwayat Nilai</strong> dengan mengetikkan NIM atau Nama.</p>
+            </div>
+
+            <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
