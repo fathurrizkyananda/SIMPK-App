@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 // =====================================================================
 // INPUT-NILAI.JS — Input nilai dengan bobot Tugas/UTS/UAS (localStorage)
+// Berkas ini dipegang dan dikembangkan oleh: Anggie
 // =====================================================================
 requireRole('dosen');
 
@@ -10,17 +10,24 @@ let editIndex = -1;
 const formNilai = document.getElementById('form-nilai');
 
 // ---------------------------------------------------------------------
-// LOAD DROPDOWN KELAS (dari data mahasiswa yang sudah didaftarkan)
+// LOAD DROPDOWN KELAS (Dinamis dari data mahasiswa)
 // ---------------------------------------------------------------------
 function loadKelas() {
-    const selectKelas = document.getElementById('kelas');
+    const mahasiswa = JSON.parse(localStorage.getItem("mahasiswa")) || [];
+    const kelasUnik = [...new Set(mahasiswa.map(m => m.kelas))];
+    const selectKelas = document.getElementById("kelas");
 
-    // Mengisi dropdown hanya dengan opsi Kelas A
-    selectKelas.innerHTML = `
-        <option value="">Pilih Kelas</option>
-        <option value="A">Kelas A</option>
-         <option value="B">Kelas B</option>
-    `;
+    selectKelas.innerHTML = '<option value="">Pilih Kelas</option>';
+    
+    if (kelasUnik.length === 0) {
+        // Fallback jika data mahasiswa masih kosong
+        selectKelas.innerHTML += '<option value="A">Kelas A</option>';
+        selectKelas.innerHTML += '<option value="B">Kelas B</option>';
+    } else {
+        kelasUnik.forEach(kelas => {
+            selectKelas.innerHTML += `<option value="${kelas}">${kelas}</option>`;
+        });
+    }
 }
 
 // ---------------------------------------------------------------------
@@ -37,19 +44,22 @@ function loadMatkul() {
 }
 
 // ---------------------------------------------------------------------
-// AUTO-ISI NAMA & KELAS SAAT NIM DIKETIK
+// AUTO-ISI NAMA & KELAS SAAT NIM DIKETIK (Blur Event)
 // ---------------------------------------------------------------------
-document.getElementById('nim').addEventListener('blur', function () {
-    const mahasiswa = JSON.parse(localStorage.getItem('mahasiswa')) || [];
-    const m = mahasiswa.find(x => x.nim === this.value.trim());
-    if (m) {
-        document.getElementById('nama').value = m.nama;
-        document.getElementById('kelas').value = m.kelas;
-    }
-});
+const nimInput = document.getElementById('nim');
+if (nimInput) {
+    nimInput.addEventListener('blur', function () {
+        const mahasiswa = JSON.parse(localStorage.getItem('mahasiswa')) || [];
+        const m = mahasiswa.find(x => x.nim === this.value.trim());
+        if (m) {
+            document.getElementById('nama').value = m.nama;
+            document.getElementById('kelas').value = m.kelas;
+        }
+    });
+}
 
 // ---------------------------------------------------------------------
-// HITUNG GRADE
+// HITUNG GRADE (Logika Konversi Angka ke Huruf)
 // ---------------------------------------------------------------------
 function hitungGrade(nilai) {
     if (nilai >= 85) return 'A';
@@ -62,7 +72,7 @@ function hitungGrade(nilai) {
 }
 
 // ---------------------------------------------------------------------
-// SIMPAN NILAI
+// SIMPAN / UPDATE NILAI
 // ---------------------------------------------------------------------
 formNilai.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -81,12 +91,14 @@ formNilai.addEventListener('submit', function (e) {
     const bobotUAS = Number(document.getElementById('bobotUAS').value);
 
     if (!nim || !nama || !kelas || !matkul) {
-        toast('Lengkapi data terlebih dahulu!', 'error');
+        if (typeof toast === "function") toast('Lengkapi data terlebih dahulu!', 'error');
+        else alert('Lengkapi data terlebih dahulu!');
         return;
     }
 
     if (bobotTugas + bobotUTS + bobotUAS !== 100) {
-        toast('Total bobot Tugas + UTS + UAS harus 100%!', 'error');
+        if (typeof toast === "function") toast('Total bobot Tugas + UTS + UAS harus 100%!', 'error');
+        else alert('Total bobot Tugas + UTS + UAS harus 100%!');
         return;
     }
 
@@ -106,233 +118,32 @@ formNilai.addEventListener('submit', function (e) {
     localStorage.setItem('nilaiMahasiswa', JSON.stringify(dataNilai));
     tampilkanData();
     resetForm();
-    toast(isEdit ? 'Nilai berhasil diperbarui.' : 'Nilai berhasil disimpan.', 'success');
+    
+    if (typeof toast === "function") {
+        toast(isEdit ? 'Nilai berhasil diperbarui.' : 'Nilai berhasil disimpan.', 'success');
+    } else {
+        alert(isEdit ? 'Nilai berhasil diperbarui.' : 'Nilai berhasil disimpan.');
+    }
 });
 
 // ---------------------------------------------------------------------
-// TAMPILKAN DATA
+// TAMPILKAN DATA KE TABEL
 // ---------------------------------------------------------------------
 function tampilkanData() {
     const tbody = document.getElementById('tbodyNilai');
+    if (!tbody) return;
+    
     tbody.innerHTML = '';
 
-    document.getElementById('jumlahNilai').innerText = dataNilai.length + ' data';
+    const jumlahNilaiEl = document.getElementById('jumlahNilai');
+    if (jumlahNilaiEl) jumlahNilaiEl.innerText = dataNilai.length + ' data';
 
     if (dataNilai.length === 0) {
         tbody.innerHTML = '<tr class="empty-row"><td colspan="10">Belum Ada Data Nilai</td></tr>';
-=======
-// ==========================
-// DATA NILAI
-// ==========================
-
-let dataNilai =
-JSON.parse(localStorage.getItem("nilaiMahasiswa")) || [];
-
-let editIndex = -1;
-
-
-// ==========================
-// LOAD DROPDOWN KELAS
-// ==========================
-
-function loadKelas() {
-
-    const mahasiswa =
-    JSON.parse(localStorage.getItem("mahasiswa")) || [];
-
-    const kelasUnik =
-    [...new Set(mahasiswa.map(m => m.kelas))];
-
-    const selectKelas =
-    document.getElementById("kelas");
-
-    selectKelas.innerHTML =
-    '<option value="">Pilih Kelas</option>';
-
-    kelasUnik.forEach(kelas => {
-
-        selectKelas.innerHTML += `
-        <option value="${kelas}">
-            ${kelas}
-        </option>
-        `;
-
-    });
-
-}
-
-
-// ==========================
-// LOAD DROPDOWN MATA KULIAH
-// ==========================
-
-function loadMatkul() {
-
-    const daftarMK =
-    JSON.parse(localStorage.getItem("matakuliah")) || [];
-
-    const selectMK =
-    document.getElementById("matkul");
-
-    selectMK.innerHTML =
-    '<option value="">Pilih Mata Kuliah</option>';
-
-    daftarMK.forEach(mk => {
-
-        selectMK.innerHTML += `
-        <option value="${mk.nama}">
-            ${mk.nama}
-        </option>
-        `;
-
-    });
-
-}
-
-
-// ==========================
-// HITUNG GRADE
-// ==========================
-
-function hitungGrade(nilai) {
-
-    if (nilai >= 85) return "A";
-    if (nilai >= 80) return "A-";
-    if (nilai >= 75) return "B+";
-    if (nilai >= 70) return "B";
-    if (nilai >= 65) return "C+";
-    if (nilai >= 60) return "C";
-
-    return "D";
-}
-
-
-// ==========================
-// SIMPAN NILAI
-// ==========================
-
-function simpanNilai() {
-
-    const nim =
-    document.getElementById("nim").value.trim();
-
-    const nama =
-    document.getElementById("nama").value.trim();
-
-    const kelas =
-    document.getElementById("kelas").value;
-
-    const matkul =
-    document.getElementById("matkul").value;
-
-    const tugas =
-    Number(document.getElementById("tugas").value);
-
-    const uts =
-    Number(document.getElementById("uts").value);
-
-    const uas =
-    Number(document.getElementById("uas").value);
-
-    const bobotTugas =
-    Number(document.getElementById("bobotTugas").value);
-
-    const bobotUTS =
-    Number(document.getElementById("bobotUTS").value);
-
-    const bobotUAS =
-    Number(document.getElementById("bobotUAS").value);
-
-    if (
-        nim === "" ||
-        nama === "" ||
-        kelas === "" ||
-        matkul === ""
-    ) {
-        alert("Lengkapi data terlebih dahulu!");
-        return;
-    }
-
-    const nilaiAkhir =
-
-        (tugas * bobotTugas / 100) +
-        (uts * bobotUTS / 100) +
-        (uas * bobotUAS / 100);
-
-    const grade =
-    hitungGrade(nilaiAkhir);
-
-    const data = {
-
-        nim,
-        nama,
-        kelas,
-        matkul,
-
-        tugas,
-        uts,
-        uas,
-
-        nilaiAkhir:
-        nilaiAkhir.toFixed(2),
-
-        grade
-
-    };
-
-    if (editIndex === -1) {
-
-        dataNilai.push(data);
-
-    } else {
-
-        dataNilai[editIndex] = data;
-
-        editIndex = -1;
-
-    }
-
-    localStorage.setItem(
-        "nilaiMahasiswa",
-        JSON.stringify(dataNilai)
-    );
-
-    tampilkanData();
-
-    resetForm();
-
-    alert("Data berhasil disimpan!");
-
-}
-
-
-// ==========================
-// TAMPILKAN DATA
-// ==========================
-
-function tampilkanData() {
-
-    const tbody =
-    document.getElementById("tbodyNilai");
-
-    tbody.innerHTML = "";
-
-    if (dataNilai.length === 0) {
-
-        tbody.innerHTML = `
-        <tr>
-            <td colspan="10">
-                Belum Ada Data Nilai
-            </td>
-        </tr>
-        `;
-
->>>>>>> ed167230191b3293826b6308cc485b4176762531
         return;
     }
 
     dataNilai.forEach((item, index) => {
-<<<<<<< HEAD
         const gClass = (item.grade || '').charAt(0).toLowerCase();
         tbody.innerHTML += `
             <tr>
@@ -354,7 +165,7 @@ function tampilkanData() {
 }
 
 // ---------------------------------------------------------------------
-// EDIT DATA
+// EDIT DATA (Ambil data dari tabel ke form)
 // ---------------------------------------------------------------------
 function editData(index) {
     const data = dataNilai[index];
@@ -376,170 +187,58 @@ function editData(index) {
 // ---------------------------------------------------------------------
 function hapusData(index) {
     const item = dataNilai[index];
-    confirmModal(`Hapus nilai <strong>${item.nama}</strong> untuk mata kuliah <strong>${item.matkul}</strong>?`, () => {
-        dataNilai.splice(index, 1);
-        localStorage.setItem('nilaiMahasiswa', JSON.stringify(dataNilai));
-        tampilkanData();
-        toast('Data nilai berhasil dihapus.', 'success');
-    }, 'Hapus Nilai?');
+    
+    if (typeof confirmModal === "function") {
+        confirmModal(`Hapus nilai <strong>${item.nama}</strong> untuk mata kuliah <strong>${item.matkul}</strong>?`, () => {
+            dataNilai.splice(index, 1);
+            localStorage.setItem('nilaiMahasiswa', JSON.stringify(dataNilai));
+            tampilkanData();
+            toast('Data nilai berhasil dihapus.', 'success');
+        }, 'Hapus Nilai?');
+    } else {
+        const konfirmasi = confirm(`Yakin ingin menghapus data nilai ${item.nama}?`);
+        if (konfirmasi) {
+            dataNilai.splice(index, 1);
+            localStorage.setItem('nilaiMahasiswa', JSON.stringify(dataNilai));
+            tampilkanData();
+        }
+    }
 }
 
 // ---------------------------------------------------------------------
-// RESET FORM
+// RESET FORM KE DEFAULT
 // ---------------------------------------------------------------------
 function resetForm() {
     formNilai.reset();
-    document.getElementById('bobotTugas').value = 20;
-    document.getElementById('bobotUTS').value = 30;
-    document.getElementById('bobotUAS').value = 50;
+    const bTugas = document.getElementById('bobotTugas');
+    const bUTS = document.getElementById('bobotUTS');
+    const bUAS = document.getElementById('bobotUAS');
+    
+    if (bTugas) bTugas.value = 20;
+    if (bUTS) bUTS.value = 30;
+    if (bUAS) bUAS.value = 50;
     editIndex = -1;
 }
 
 // ---------------------------------------------------------------------
-// EXPORT CSV
+// EXPORT CSV (Fitur Tambahan)
 // ---------------------------------------------------------------------
 function exportNilaiCSV() {
-    exportCSV(
-        'data-nilai.csv',
-        ['NIM', 'Nama', 'Kelas', 'Mata Kuliah', 'Tugas', 'UTS', 'UAS', 'Nilai Akhir', 'Grade'],
-        dataNilai.map(d => [d.nim, d.nama, d.kelas, d.matkul, d.tugas, d.uts, d.uas, d.nilaiAkhir, d.grade])
-    );
+    if (typeof exportCSV === "function") {
+        exportCSV(
+            'data-nilai.csv',
+            ['NIM', 'Nama', 'Kelas', 'Mata Kuliah', 'Tugas', 'UTS', 'UAS', 'Nilai Akhir', 'Grade'],
+            dataNilai.map(d => [d.nim, d.nama, d.kelas, d.matkul, d.tugas, d.uts, d.uas, d.nilaiAkhir, d.grade])
+        );
+    }
 }
 
 // ---------------------------------------------------------------------
-// LOAD AWAL
+// LOAD AWAL SAAT HALAMAN DIBUKA
 // ---------------------------------------------------------------------
 loadKelas();
 loadMatkul();
 tampilkanData();
-liveFilterTable('searchNilai', 'tbodyNilai');
-=======
-
-        tbody.innerHTML += `
-        <tr>
-
-            <td>${item.nim}</td>
-
-            <td>${item.nama}</td>
-
-            <td>${item.kelas}</td>
-
-            <td>${item.matkul}</td>
-
-            <td>${item.tugas}</td>
-
-            <td>${item.uts}</td>
-
-            <td>${item.uas}</td>
-
-            <td>${item.nilaiAkhir}</td>
-
-            <td>${item.grade}</td>
-
-            <td>
-
-                <button
-                onclick="editData(${index})">
-                Edit
-                </button>
-
-                <button
-                onclick="hapusData(${index})">
-                Hapus
-                </button>
-
-            </td>
-
-        </tr>
-        `;
-
-    });
-
+if (typeof liveFilterTable === "function") {
+    liveFilterTable('searchNilai', 'tbodyNilai');
 }
-
-
-// ==========================
-// EDIT DATA
-// ==========================
-
-function editData(index) {
-
-    const data =
-    dataNilai[index];
-
-    document.getElementById("nim").value =
-    data.nim;
-
-    document.getElementById("nama").value =
-    data.nama;
-
-    document.getElementById("kelas").value =
-    data.kelas;
-
-    document.getElementById("matkul").value =
-    data.matkul;
-
-    document.getElementById("tugas").value =
-    data.tugas;
-
-    document.getElementById("uts").value =
-    data.uts;
-
-    document.getElementById("uas").value =
-    data.uas;
-
-    editIndex = index;
-
-}
-
-
-// ==========================
-// HAPUS DATA
-// ==========================
-
-function hapusData(index) {
-
-    const konfirmasi =
-    confirm("Yakin ingin menghapus data?");
-
-    if (!konfirmasi) return;
-
-    dataNilai.splice(index, 1);
-
-    localStorage.setItem(
-        "nilaiMahasiswa",
-        JSON.stringify(dataNilai)
-    );
-
-    tampilkanData();
-
-}
-
-
-// ==========================
-// RESET FORM
-// ==========================
-
-function resetForm() {
-
-    document.getElementById("nim").value = "";
-    document.getElementById("nama").value = "";
-
-    document.getElementById("kelas").value = "";
-    document.getElementById("matkul").value = "";
-
-    document.getElementById("tugas").value = "";
-    document.getElementById("uts").value = "";
-    document.getElementById("uas").value = "";
-
-}
-
-
-// ==========================
-// LOAD AWAL
-// ==========================
-
-loadKelas();
-loadMatkul();
-tampilkanData();
->>>>>>> ed167230191b3293826b6308cc485b4176762531
