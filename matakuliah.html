@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mata Kuliah - SIPMK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="seal">S</span>
+                <h1>SIPMK</h1>
+            </div>
+            <p class="sidebar-role" id="sidebarRole">Portal</p>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <div class="sidebar-foot">
+                <a href="#" id="logoutLink"><span class="icon">🚪</span> Logout</a>
+            </div>
+        </aside>
+        <div class="sidebar-backdrop"></div>
+
+        <main class="app-main">
+            <div class="mobile-topbar">
+                <button id="sidebarOpen" type="button">☰</button>
+                <h2>Mata Kuliah</h2>
+            </div>
+
+            <div class="topbar">
+                <div>
+                    <h2>Data Mata Kuliah</h2>
+                    <p id="topbarDesc">Daftar mata kuliah yang tersedia pada sistem.</p>
+                </div>
+                <div class="topbar-user">
+                    <div class="avatar" id="topbarAvatar">?</div>
+                    <span id="topbarRoleLabel">-</span>
+                </div>
+            </div>
+
+            <div class="app-content">
+                <div class="panel" id="formPanel" style="margin-top:0;">
+                    <h3>Form Mata Kuliah</h3>
+                    <form id="form-matakuliah">
+                        <div class="field-grid">
+                            <div class="field">
+                                <label for="kode">Kode Mata Kuliah</label>
+                                <input type="text" id="kode" placeholder="Contoh: SI301" required>
+                            </div>
+                            <div class="field">
+                                <label for="namaMK">Nama Mata Kuliah</label>
+                                <input type="text" id="namaMK" placeholder="Contoh: Perancangan Web" required>
+                            </div>
+                            <div class="field">
+                                <label for="sks">SKS</label>
+                                <input type="number" id="sks" min="1" max="6" placeholder="3" required>
+                            </div>
+                            <div class="field">
+                                <label for="semester">Semester</label>
+                                <input type="number" id="semester" min="1" max="8" placeholder="5" required>
+                            </div>
+                        </div>
+                        <div class="panel-actions">
+                            <button type="submit" class="btn-save">💾 Simpan Mata Kuliah</button>
+                            <button type="button" class="btn-secondary" onclick="resetMK()">Batal</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel" style="margin-top:0;">
+                    <div class="table-toolbar">
+                        <h3>Daftar Mata Kuliah</h3>
+                        <span class="pill-count" id="jumlahMK">0 mata kuliah</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div class="search-box">
+                            <input type="text" id="searchMK" placeholder="Cari kode atau nama mata kuliah...">
+                        </div>
+                        <button type="button" class="btn-secondary" onclick="exportMKCSV()">⬇ Export CSV</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Kode</th>
+                                    <th>Nama Mata Kuliah</th>
+                                    <th>SKS</th>
+                                    <th>Semester</th>
+                                    <th id="thAksi">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyMK"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/matakuliah.js"></script>
+</body>
+</html>
